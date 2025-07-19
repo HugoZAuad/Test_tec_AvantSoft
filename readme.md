@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto
 
-O **test_avantsoft** é uma API backend desenvolvida com NestJS, Prisma ORM e PostgreSQL para gerenciar produtos de forma estruturada. A aplicação implementa operações completas de CRUD, validação de dados com DTOs, interceptadores personalizados, autenticação via guard, e testes unitários e E2E. A arquitetura modular facilita o desenvolvimento escalável e manutenível.
+O **test_avantsoft** é uma API backend desenvolvida com NestJS, Prisma ORM e PostgreSQL para gerenciar produtos de forma estruturada. A aplicação implementa operações completas de CRUD, validação de dados com DTOs, interceptadores personalizados, autenticação via guard, e testes unitários. A arquitetura modular facilita o desenvolvimento escalável e manutenível.
 
 ---
 
@@ -12,7 +12,7 @@ O **test_avantsoft** é uma API backend desenvolvida com NestJS, Prisma ORM e Po
 - **Prisma ORM**: ORM para modelagem e consultas ao banco de dados PostgreSQL.
 - **PostgreSQL**: Banco de dados relacional utilizado para persistência de produtos.
 - **Class-validator / Class-transformer**: Validação e transformação de dados via DTOs.
-- **Jest + Supertest**: Frameworks para testes unitários e end-to-end.
+- **Jest + Supertest**: Frameworks para testes unitários.
 - **Interceptors**: Validação de SKU e enriquecimento do retorno com letras ausentes.
 - **Middleware**: Registro de requisições e tratamento de erros.
 - **Guards**: Proteção de rotas com validação de token.

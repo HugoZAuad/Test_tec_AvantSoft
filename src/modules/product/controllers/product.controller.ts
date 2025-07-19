@@ -1,12 +1,14 @@
-import { Body, Controller, Post, Get, Param, Patch, Delete, ParseIntPipe } from '@nestjs/common';
+import { Body, Controller, Post, Get, Param, Patch, Delete, ParseIntPipe, UseInterceptors } from '@nestjs/common';
 import { ProductCreateService } from '../services/product-create.service';
 import { ProductReadService } from '../services/product-read.service';
 import { ProductUpdateService } from '../services/product-update.service';
 import { ProductDeleteService } from '../services/product-delete.service';
 import { CreateProductDto } from '../dto/create_product.dto';
 import { UpdateProductDto } from '../dto/update_product.dto';
+import { MissingLetterInterceptor } from '../../../shared/interceptors/missing-letter.interceptor';
 
 @Controller('products')
+@UseInterceptors(MissingLetterInterceptor)
 export class ProductController {
   constructor(
     private readonly createService: ProductCreateService,

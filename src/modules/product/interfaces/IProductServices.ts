@@ -1,4 +1,4 @@
-import { IProduct } from '../product.service';
+import { IProduct } from './IProduct';
 
 export interface IProductService {
   create(data: IProduct): Promise<any>;

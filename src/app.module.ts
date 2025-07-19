@@ -1,7 +1,8 @@
 import { Module, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
-import { ProductModule } from './product/product.module';
+import { ProductModule } from './modules/product/product.module';
 import { LoggerMiddleware } from './shared/middleware/logger.middleware';
+import { ErrorHandlerMiddleware } from './shared/middleware/error-handler.middleware';
 import { AuthGuard } from './shared/guards/auth.guard';
 
 @Module({
@@ -16,7 +17,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(LoggerMiddleware)
+      .apply(LoggerMiddleware, ErrorHandlerMiddleware)
       .forRoutes({ path: '*', method: RequestMethod.ALL });
   }
 }

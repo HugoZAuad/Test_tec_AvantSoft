@@ -9,8 +9,4 @@ export class UpdateProductDto {
   @IsNumber()
   @IsPositive()
   price?: number;
-
-  @IsOptional()
-  @IsString()
-  sku?: string;
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Get, Param, Patch, Delete, ParseIntPipe, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Post, Get, Param, Put, Delete, ParseIntPipe, UseInterceptors } from '@nestjs/common';
 import { ProductCreateService } from '../services/product-create.service';
 import { ProductReadService } from '../services/product-read.service';
 import { ProductUpdateService } from '../services/product-update.service';
@@ -6,6 +6,7 @@ import { ProductDeleteService } from '../services/product-delete.service';
 import { CreateProductDto } from '../dto/create_product.dto';
 import { UpdateProductDto } from '../dto/update_product.dto';
 import { MissingLetterInterceptor } from '../../../shared/interceptors/missing-letter.interceptor';
+import { UniqueSkuInterceptor } from '../../../shared/interceptors/unique-sku.interceptor';
 
 @Controller('products')
 @UseInterceptors(MissingLetterInterceptor)
@@ -18,6 +19,7 @@ export class ProductController {
   ) {}
 
   @Post()
+  @UseInterceptors(UniqueSkuInterceptor)
   async create(@Body() createProductDto: CreateProductDto) {
     return this.createService.create(createProductDto);
   }
@@ -32,7 +34,8 @@ export class ProductController {
     return this.readService.findOne(id);
   }
 
-  @Patch(':id')
+  @Put(':id')
+  @UseInterceptors(UniqueSkuInterceptor)
   async update(@Param('id', ParseIntPipe) id: number, @Body() updateProductDto: UpdateProductDto) {
     return this.updateService.update(id, updateProductDto);
   }
